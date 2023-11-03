@@ -1,0 +1,139 @@
+*,
+::after,
+::before {
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --primaryColor: #eee;
+  --whiteColor: #fff;
+  --blackColor: #111;
+  --redColor: #f50;
+}
+
+body {
+  height: 100vh;
+  font-family: "Helvetica Neue";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primaryColor);
+}
+
+body.dark {
+    --primaryColor: #222;
+    --whiteColor: #000;
+    --blackColor: #fff;
+    --redColor: #f50;
+}
+
+.wrapper {
+  background-color: var(--whiteColro);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.clock {
+  width: 400px;
+  height: 400px;
+  background-color: var(--whiteColor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0);
+  position: relative;
+}
+
+.clock div {
+  position: absolute;
+  inset: 20px;
+  transform: rotate(calc(var(--i) * (360deg / 12)));
+  text-align: center;
+}
+
+.clock div span {
+  display: inline-block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  transform: rotate(calc(var(--i) * (-360deg / 12)));
+  color: var(--blackColor) ;
+}
+
+.clock .indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  background-color: red;
+}
+
+.indicator::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--blackColor);
+  border-radius: 50%;
+  border: 4px solid var(--redColor);
+  z-index: 10;
+}
+
+.indicator .hand {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: top;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 140px;
+  border-radius: 12px;
+  background-color: var(--redColor);
+}
+
+.hand.minute {
+  height: 110px;
+  width: 4px;
+  background-color: var(--blackColor);
+  transform: rotate(45deg);
+}
+.hand.hour {
+  height: 90px;
+  width: 6px;
+  background-color: var(--blackColor);
+  transform: rotate(55deg);
+}
+
+.toggle_mode {
+    padding: 6px 8px;
+    background-color: var(--blackColor);
+    color: var(--whiteColor);
+    margin: 0 auto;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    box-shadow: 0px 4px 2px var(--blackColor);
+    transform: translateY(0px);
+    transition: .3s;
+}
+
+.toggle_mode:active {
+    box-shadow: 0px 0px 0px rgba(0,0,0, .5);
+    transform: translateY(4px);
+}
